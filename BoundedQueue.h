@@ -8,14 +8,15 @@
 
 #include <queue>
 #include <string>
-#include <bits/semaphore.h>
+#include <semaphore.h>
 
 class BoundedQueue : public std::queue<std::string>{
 private:
     pthread_mutex_t _lock;
     sem_t _empty, _full;
+    unsigned int _capacity;
 public:
-    explicit BoundedQueue(int);
+    BoundedQueue(unsigned int capacity);
     BoundedQueue();
     void push(std::string);
     std::string pop();
