@@ -40,3 +40,14 @@ std::string BoundedQueue::pop() {
     pthread_mutex_unlock(&_lock);
     return t;
 }
+
+std::string BoundedQueue::top() {
+    std::string str;
+    pthread_mutex_lock(&_lock);
+    if(std::queue<std::string>::empty())
+        str = nullptr;
+    else
+        str = std::queue<std::string>::front();
+    pthread_mutex_unlock(&_lock);
+    return str;
+}

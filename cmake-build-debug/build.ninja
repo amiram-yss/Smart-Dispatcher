@@ -55,8 +55,26 @@ build CMakeFiles/OS3.dir/main.cpp.o: CXX_COMPILER__OS3_Debug /home/amiramyss/CLi
   OBJECT_DIR = CMakeFiles/OS3.dir
   OBJECT_FILE_DIR = CMakeFiles/OS3.dir
 
+build CMakeFiles/OS3.dir/ConfigurationHandler.cpp.o: CXX_COMPILER__OS3_Debug /home/amiramyss/CLionProjects/OS3/ConfigurationHandler.cpp || cmake_object_order_depends_target_OS3
+  DEP_FILE = CMakeFiles/OS3.dir/ConfigurationHandler.cpp.o.d
+  FLAGS = -g -std=gnu++14
+  OBJECT_DIR = CMakeFiles/OS3.dir
+  OBJECT_FILE_DIR = CMakeFiles/OS3.dir
+
 build CMakeFiles/OS3.dir/BoundedQueue.cpp.o: CXX_COMPILER__OS3_Debug /home/amiramyss/CLionProjects/OS3/BoundedQueue.cpp || cmake_object_order_depends_target_OS3
   DEP_FILE = CMakeFiles/OS3.dir/BoundedQueue.cpp.o.d
+  FLAGS = -g -std=gnu++14
+  OBJECT_DIR = CMakeFiles/OS3.dir
+  OBJECT_FILE_DIR = CMakeFiles/OS3.dir
+
+build CMakeFiles/OS3.dir/UnboundedQueue.cpp.o: CXX_COMPILER__OS3_Debug /home/amiramyss/CLionProjects/OS3/UnboundedQueue.cpp || cmake_object_order_depends_target_OS3
+  DEP_FILE = CMakeFiles/OS3.dir/UnboundedQueue.cpp.o.d
+  FLAGS = -g -std=gnu++14
+  OBJECT_DIR = CMakeFiles/OS3.dir
+  OBJECT_FILE_DIR = CMakeFiles/OS3.dir
+
+build CMakeFiles/OS3.dir/Report.cpp.o: CXX_COMPILER__OS3_Debug /home/amiramyss/CLionProjects/OS3/Report.cpp || cmake_object_order_depends_target_OS3
+  DEP_FILE = CMakeFiles/OS3.dir/Report.cpp.o.d
   FLAGS = -g -std=gnu++14
   OBJECT_DIR = CMakeFiles/OS3.dir
   OBJECT_FILE_DIR = CMakeFiles/OS3.dir
@@ -69,7 +87,7 @@ build CMakeFiles/OS3.dir/BoundedQueue.cpp.o: CXX_COMPILER__OS3_Debug /home/amira
 #############################################
 # Link the executable OS3
 
-build OS3: CXX_EXECUTABLE_LINKER__OS3_Debug CMakeFiles/OS3.dir/main.cpp.o CMakeFiles/OS3.dir/BoundedQueue.cpp.o
+build OS3: CXX_EXECUTABLE_LINKER__OS3_Debug CMakeFiles/OS3.dir/main.cpp.o CMakeFiles/OS3.dir/ConfigurationHandler.cpp.o CMakeFiles/OS3.dir/BoundedQueue.cpp.o CMakeFiles/OS3.dir/UnboundedQueue.cpp.o CMakeFiles/OS3.dir/Report.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/OS3.dir
   POST_BUILD = :

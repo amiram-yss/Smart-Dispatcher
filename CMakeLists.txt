@@ -3,4 +3,4 @@ project(OS3)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(OS3 main.cpp BoundedQueue.cpp BoundedQueue.h)
+add_executable(OS3 main.cpp ConfigurationHandler.cpp ConfigurationHandler.h BoundedQueue.cpp BoundedQueue.h UnboundedQueue.cpp UnboundedQueue.h Report.cpp Report.h)

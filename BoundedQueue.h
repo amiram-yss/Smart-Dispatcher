@@ -20,6 +20,8 @@ public:
     BoundedQueue();
     void push(std::string);
     std::string pop();
+
+    std::string top();
 };
 
 
