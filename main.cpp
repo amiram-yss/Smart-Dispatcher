@@ -6,7 +6,7 @@
 
 static std::vector<ConfigurationHandler::ConfigurationItem> *configs;
 static std::vector<BoundedQueue> reporterQueues;
-static std::vector<Report> *reporterThreads;
+static std::vector<pthread_t> *reporterThreads;
 
 bool init() {
     configs = ConfigurationHandler::ReadConfig("config.txt");
@@ -15,11 +15,19 @@ bool init() {
     for (auto conf : *configs) {
         reporterQueues.push_back(BoundedQueue(conf.capacityQueue));
     }
+    reporterThreads = new std::vector<pthread_t>();
+    reporterThreads->resize(reporterQueues.size());
     return true;
 }
 
+void singleReporterRoutine(ConfigurationHandler::ConfigurationItem confItem) {
+
+}
+
 void routine() {
-    reporterThreads->resize(5);//TODO: resize problem
+    for (int i = 0; i < reporterThreads->size(); i++) {
+
+    }
 }
 
 int main(int argc, char *argv[]) {

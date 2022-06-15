@@ -13,6 +13,7 @@ private:
     unsigned int _producerId, _reportId;
     ReportType _type;
 public:
+    Report();
     Report(unsigned int producerId, unsigned int reportId);
     friend std::ostream& operator<<(std::ostream& os, const Report &report);
 };

@@ -27,3 +27,8 @@ std::ostream &operator<<(std::ostream &os, const Report &report) {
     os << " ";
     os << report._reportId;
 }
+
+Report::Report() : _producerId(-1), _reportId(-1) {
+    srand(time(NULL)); //Will it be problematic with threads?
+    _type = static_cast<ReportType>(std::rand() % 3);
+}
