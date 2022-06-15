@@ -5,7 +5,7 @@
 #ifndef OS3_REPORT_H
 #define OS3_REPORT_H
 
-#import <iostream>
+#include <iostream>
 
 enum ReportType {SPORTS, NEWS, WEATHER};
 class Report {
@@ -16,6 +16,7 @@ public:
     Report();
     Report(unsigned int producerId, unsigned int reportId);
     friend std::ostream& operator<<(std::ostream& os, const Report &report);
+    bool isEndingReport();
 };
 
 

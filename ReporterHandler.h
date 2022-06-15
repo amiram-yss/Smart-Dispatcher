@@ -9,16 +9,31 @@
 #include <csignal>
 #include "BoundedQueue.h"
 #include "ConfigurationHandler.h"
+#include "Report.h"
 
+//Due to template, forced to implement methods in .h file.
 class ReporterHandler {
 private:
-    BoundedQueue _buffer;
     unsigned int _id, _reportsNum;
 public:
-    ReporterHandler();
-    ReporterHandler(ConfigurationHandler::ConfigurationItem data);
+    BoundedQueue<Report> _buffer;
+    ReporterHandler(){
+        this->_id = -1;
+        this->_reportsNum = -1;
+    }
 
-    void run();
+    ReporterHandler(ConfigurationHandler::ConfigurationItem data) : _id(data.producerId)
+            , _reportsNum(data.numProducts) {
+        _buffer = BoundedQueue<Report>(data.capacityQueue);
+    }
+
+    void makeReports(){
+        for (int i = 0; i < _reportsNum; i++) {
+            _buffer.push(Report(_id, i));
+            std::cout << _buffer.top() << std::endl;
+        }
+        _buffer.push(Report(-1,-1));
+    }
 };
 
 
