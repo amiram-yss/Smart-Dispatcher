@@ -2,9 +2,7 @@
 // Created by amiramyss on 6/15/22.
 //
 
-#ifndef OS3_REPORTERHANDLER_H
-#define OS3_REPORTERHANDLER_H
-
+#pragma once
 
 #include <csignal>
 #include "BoundedQueue.h"
@@ -18,26 +16,11 @@ private:
 public:
     bool _done;
     BoundedQueue<std::string> _buffer;
-    ReporterHandler(){
-        this->_id = -1;
-        this->_reportsNum = -1;
-        _done = false;
-    }
 
-    ReporterHandler(ConfigurationHandler::ConfigurationItem data) : _id(data.producerId)
-            , _reportsNum(data.numProducts) , _done(false) {
-        _buffer = BoundedQueue<std::string>(data.capacityQueue);
-    }
+    ReporterHandler();
 
-    void makeReports(){
-        for (unsigned int i = 0; i < _reportsNum; i++) {
-            auto str = Report(_id, i).toString();
-            _buffer.push(str);
-            //std::cout << _buffer.top() << std::endl;
-        }
-        _buffer.push("DONE"); //Report(-1,-1)
-    }
+    explicit ReporterHandler(ConfigurationHandler::ConfigurationItem data);
+
+    void makeReports();
 };
 
-
-#endif //OS3_REPORTERHANDLER_H

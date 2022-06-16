@@ -97,10 +97,10 @@
 		<Unit filename="/home/amiramyss/CLionProjects/OS3/Report.h">
 			<Option target="OS3"/>
 		</Unit>
-		<Unit filename="/home/amiramyss/CLionProjects/OS3/ReporterHandler.h">
+		<Unit filename="/home/amiramyss/CLionProjects/OS3/ReporterHandler.cpp">
 			<Option target="OS3"/>
 		</Unit>
-		<Unit filename="/home/amiramyss/CLionProjects/OS3/UnboundedQueue.cpp">
+		<Unit filename="/home/amiramyss/CLionProjects/OS3/ReporterHandler.h">
 			<Option target="OS3"/>
 		</Unit>
 		<Unit filename="/home/amiramyss/CLionProjects/OS3/UnboundedQueue.h">

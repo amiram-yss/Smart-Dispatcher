@@ -177,29 +177,29 @@ Report.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/Report.cpp.s
 .PHONY : Report.cpp.s
 
-UnboundedQueue.o: UnboundedQueue.cpp.o
-.PHONY : UnboundedQueue.o
+ReporterHandler.o: ReporterHandler.cpp.o
+.PHONY : ReporterHandler.o
 
 # target to build an object file
-UnboundedQueue.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/UnboundedQueue.cpp.o
-.PHONY : UnboundedQueue.cpp.o
+ReporterHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/ReporterHandler.cpp.o
+.PHONY : ReporterHandler.cpp.o
 
-UnboundedQueue.i: UnboundedQueue.cpp.i
-.PHONY : UnboundedQueue.i
+ReporterHandler.i: ReporterHandler.cpp.i
+.PHONY : ReporterHandler.i
 
 # target to preprocess a source file
-UnboundedQueue.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/UnboundedQueue.cpp.i
-.PHONY : UnboundedQueue.cpp.i
+ReporterHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/ReporterHandler.cpp.i
+.PHONY : ReporterHandler.cpp.i
 
-UnboundedQueue.s: UnboundedQueue.cpp.s
-.PHONY : UnboundedQueue.s
+ReporterHandler.s: ReporterHandler.cpp.s
+.PHONY : ReporterHandler.s
 
 # target to generate assembly for a file
-UnboundedQueue.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/UnboundedQueue.cpp.s
-.PHONY : UnboundedQueue.cpp.s
+ReporterHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/ReporterHandler.cpp.s
+.PHONY : ReporterHandler.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -240,9 +240,9 @@ help:
 	@echo "... Report.o"
 	@echo "... Report.i"
 	@echo "... Report.s"
-	@echo "... UnboundedQueue.o"
-	@echo "... UnboundedQueue.i"
-	@echo "... UnboundedQueue.s"
+	@echo "... ReporterHandler.o"
+	@echo "... ReporterHandler.i"
+	@echo "... ReporterHandler.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
