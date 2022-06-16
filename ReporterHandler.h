@@ -16,23 +16,26 @@ class ReporterHandler {
 private:
     unsigned int _id, _reportsNum;
 public:
-    BoundedQueue<Report> _buffer;
+    bool _done;
+    BoundedQueue<std::string> _buffer;
     ReporterHandler(){
         this->_id = -1;
         this->_reportsNum = -1;
+        _done = false;
     }
 
     ReporterHandler(ConfigurationHandler::ConfigurationItem data) : _id(data.producerId)
-            , _reportsNum(data.numProducts) {
-        _buffer = BoundedQueue<Report>(data.capacityQueue);
+            , _reportsNum(data.numProducts) , _done(false) {
+        _buffer = BoundedQueue<std::string>(data.capacityQueue);
     }
 
     void makeReports(){
-        for (int i = 0; i < _reportsNum; i++) {
-            _buffer.push(Report(_id, i));
-            std::cout << _buffer.top() << std::endl;
+        for (unsigned int i = 0; i < _reportsNum; i++) {
+            auto str = Report(_id, i);
+            _buffer.push(str.toString());
+            //std::cout << _buffer.top() << std::endl;
         }
-        _buffer.push(Report(-1,-1));
+        _buffer.push("DONE"); //Report(-1,-1)
     }
 };
 
