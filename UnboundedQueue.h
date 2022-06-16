@@ -14,9 +14,11 @@ class UnboundedQueue : public std::queue<T> {
 private:
     pthread_mutex_t _lock;
     sem_t _full;
+    //std::queue<T> _queue;
 public:
     UnboundedQueue() {
         sem_init(&_full, 0, 0);
+        pthread_mutex_unlock(&_lock);
     }
 
     std::string pop(){
@@ -31,10 +33,13 @@ public:
         pthread_mutex_unlock(&_lock);
         //return upper value
         return str;
-    }
+    };
 
     void push(T str) {
         // no limitation here. just lock and proceed
+        auto yichs = pthread_mutex_trylock(&_lock);
+        if(yichs)
+            std::cout<<"oof " << yichs <<std::endl;
         pthread_mutex_lock(&_lock);
         //push
         std::queue<T>::push(str);

@@ -4,7 +4,6 @@
 #include "ConfigurationHandler.h"
 #include "Report.h"
 #include "ReporterHandler.h"
-#include "Dispatcher.h"
 
 //Collections
 //static std::vector<ConfigurationHandler::ConfigurationItem> *configs;
@@ -14,10 +13,8 @@ static pthread_t dispatcher_thread;
 //Dispatcher dispatcher;
 UnboundedQueue<std::string> dispatcher;
 
-// Mutex
-pthread_mutex_t lock_dispatcher;
 bool init() {
-    std::vector<ConfigurationHandler::ConfigurationItem> *configs = ConfigurationHandler::ReadConfig("config.txt");
+    std::vector<ConfigurationHandler::ConfigurationItem> *configs = ConfigurationHandler::ReadConfig("config_s.txt");
     if(configs == nullptr)
         return false;
     for (auto conf : *configs) {
@@ -42,20 +39,20 @@ void *dispatcherRoutine(void *params) {
         //Scan each reporter
         for (int i = 0; i < reporterQueues.size(); ++i) {
             // If reporter hasn't sent done yet.
-            if (reporterQueues[i]._done)
+            if (reporterQueues[0]._done)
                 continue;
             // Get report from reporter, _buffer is THREAD SAFE WITH MUTEX
-            auto result = reporterQueues[i]._buffer.pop();
+            auto result = reporterQueues[0]._buffer.pop();
             if(result == "DONE") {
-                reporterQueues[i]._done = true;
+                reporterQueues[0]._done = true;
                 continue;
             }
             //Atomic insertion to queue
-            pthread_mutex_lock(&lock_dispatcher);
+            //pthread_mutex_lock(&lock_dispatcher);
             dispatcher.push(result);
             //TODO delete
             std::cout << result << std::endl;
-            pthread_mutex_unlock(&lock_dispatcher);
+            //pthread_mutex_unlock(&lock_dispatcher);
 
             finished = false;
         }
@@ -65,15 +62,19 @@ void *dispatcherRoutine(void *params) {
 }
 
 void routine() {
-    for (int i = 0; i < /*reporterQueues.size()*/1; ++i) {
+    for (int i = 0; i < reporterQueues.size(); ++i) {
         auto thread = &reporterThreads[i];
         auto param = (void *)&reporterQueues[i];
         pthread_create(thread, NULL, &singleReporterRoutine, param);
 //        reporterQueues[i].makeReports();
     }
-    //Dispatcher dispatcher = Dispatcher(&reporterQueues);
     pthread_create(&dispatcher_thread, NULL, dispatcherRoutine , NULL);
+/*    for (int i = 0; i < reporterQueues.size(); ++i) {
+        auto thread = &reporterThreads[i];
+        pthread_join(*thread, NULL);
+    }*/
     pthread_join(dispatcher_thread, NULL);
+
 }
 
 int main(int argc, char *argv[]) {

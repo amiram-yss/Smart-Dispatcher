@@ -31,8 +31,8 @@ public:
 
     void makeReports(){
         for (unsigned int i = 0; i < _reportsNum; i++) {
-            auto str = Report(_id, i);
-            _buffer.push(str.toString());
+            auto str = Report(_id, i).toString();
+            _buffer.push(str);
             //std::cout << _buffer.top() << std::endl;
         }
         _buffer.push("DONE"); //Report(-1,-1)
