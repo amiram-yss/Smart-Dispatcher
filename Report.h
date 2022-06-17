@@ -12,6 +12,7 @@ class Report {
 private:
     unsigned int _producerId, _reportId;
     ReportType _type;
+    int randomCategory();
 public:
     Report();
     Report(unsigned int producerId, unsigned int reportId);

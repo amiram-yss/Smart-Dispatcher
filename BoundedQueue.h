@@ -22,7 +22,7 @@ private:
 
 public:
     // TODO check if do we need = 0 I mean loser.
-    BoundedQueue(unsigned int capacity) : _capacity(capacity), _queue() {
+    BoundedQueue(unsigned int capacity = 0) : _capacity(capacity), _queue() {
         sem_init(&_full, 0, 0);
         sem_init(&_empty, 0, _capacity);
         pthread_mutex_init(&_lock, nullptr);

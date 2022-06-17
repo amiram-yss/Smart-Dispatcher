@@ -13,7 +13,7 @@ public:
     struct ConfigurationItem {
         int producerId, numProducts, capacityQueue;
     };
-    static std::vector<ConfigurationItem> *ReadConfig(std::string);
+    static std::vector<ConfigurationItem> *ReadConfig(std::string, int *);
 private:
 
 };

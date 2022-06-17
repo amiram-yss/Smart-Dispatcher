@@ -3,37 +3,26 @@
 //
 
 #include <cstdlib>
+#include <random>
+#include <sys/time.h>
 #include "Report.h"
+
 
 Report::Report(unsigned int producerId, unsigned int reportId) :_producerId(producerId), _reportId(reportId){
     //srand(time(NULL)); //Will it be problematic with threads?
     _type = static_cast<ReportType>(std::rand() % 3);
+    //_type = static_cast<ReportType>(randomCategory());
+}
+
+Report::Report() : _producerId(-1), _reportId(-1) {
+    //srand(time(NULL)); //Will it be problematic with threads?
+    _type = static_cast<ReportType>(std::rand() % 3);
+    _type = static_cast<ReportType>(randomCategory());
 }
 
 std::ostream &operator<<(std::ostream &os, const Report &report) {
     os << report.toString();
     return os;
-    /*os<< "producer " << report._producerId ;
-    os << " ";
-    switch (report._type) {
-        case ReportType::SPORTS:
-            os << "SPORTS";
-            break;
-        case ReportType::NEWS:
-            os << "NEWS";
-            break;
-        case ReportType::WEATHER:
-            os << "WEATHER";
-            break;
-    }
-    os << " ";
-    os << report._reportId;
-    return os;*/
-}
-
-Report::Report() : _producerId(-1), _reportId(-1) {
-    srand(time(NULL)); //Will it be problematic with threads?
-    _type = static_cast<ReportType>(std::rand() % 3);
 }
 
 bool Report::isEndingReport() {
@@ -65,4 +54,11 @@ ReportType Report::getReportType(const std::string& rep) {
     if (rep.find("WEATHER") != std::string::npos)
         return WEATHER;
     return ERROR;
+}
+
+int Report::randomCategory() {
+    struct timeval now{};
+    gettimeofday(&now, nullptr);
+    time_t msec_now = (now.tv_sec * 1000) + (now.tv_usec / 1000);
+    return msec_now % 3;
 }
