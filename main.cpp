@@ -13,6 +13,8 @@ static pthread_t dispatcher_thread;
 //Dispatcher dispatcher;
 // TODO check how to do this non static
 static UnboundedQueue<std::string> dispatcher;
+static std::vector<UnboundedQueue<std::string>> typeSortedQueue;
+static std::vector<pthread_t> typeSortedThread
 
 bool init() {
     std::vector<ConfigurationHandler::ConfigurationItem> *configs = ConfigurationHandler::ReadConfig("config.txt");
@@ -61,6 +63,8 @@ void *dispatcherRoutine(void *params) {
             break;
     }
 }
+
+
 
 void routine() {
     for (int i = 0; i < reporterQueues.size(); ++i) {
