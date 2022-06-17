@@ -13,11 +13,11 @@ static pthread_t dispatcher_thread;
 //Dispatcher dispatcher;
 // TODO check how to do this non static
 static UnboundedQueue<std::string> dispatcher;
-static std::vector<UnboundedQueue<std::string>> typeSortedQueue;
-static std::vector<pthread_t> typeSortedThread
+static pthread_t sorterThread;
+static std::vector<UnboundedQueue<std::string>> typeSortedQueueCollection;
 
 bool init() {
-    std::vector<ConfigurationHandler::ConfigurationItem> *configs = ConfigurationHandler::ReadConfig("config.txt");
+    std::vector<ConfigurationHandler::ConfigurationItem> *configs = ConfigurationHandler::ReadConfig("config_s.txt");
     if (configs == nullptr)
         return false;
     for (auto conf: *configs) {
@@ -26,6 +26,7 @@ bool init() {
     reporterThreads = std::vector<pthread_t>();
     reporterThreads.resize(reporterQueues.size());
     dispatcher = UnboundedQueue<std::string>();
+    typeSortedQueueCollection.resize(sizeof (ReportType) - 1);
     return true;
 }
 
@@ -51,10 +52,9 @@ void *dispatcherRoutine(void *params) {
                 continue;
             }
             //Atomic insertion to queue
-            //pthread_mutex_lock(&lock_dispatcher);
             dispatcher.push(result);
-            //TODO delete
-            std::cout << result << std::endl;
+            //std::cout << result << std::endl;
+            //dispatcher.push("DONE");
             //pthread_mutex_unlock(&lock_dispatcher);
 
             finished = false;
@@ -62,23 +62,34 @@ void *dispatcherRoutine(void *params) {
         if (finished)
             break;
     }
+    dispatcher.push("DONE");
 }
 
-
+void *sorterRoutine(void *params) {
+    auto report = dispatcher.pop();
+    while (report != "DONE") {
+        auto type = Report::getReportType(report);
+        typeSortedQueueCollection[type].push(report);
+        report = dispatcher.pop();
+    }
+    typeSortedQueueCollection[SPORTS].push("DONE");
+    typeSortedQueueCollection[WEATHER].push("DONE");
+    typeSortedQueueCollection[NEWS].push("DONE");
+}
 
 void routine() {
     for (int i = 0; i < reporterQueues.size(); ++i) {
         auto thread = &reporterThreads[i];
         auto param = (void *) &reporterQueues[i];
         pthread_create(thread, NULL, &singleReporterRoutine, param);
-//        reporterQueues[i].makeReports();
     }
     pthread_create(&dispatcher_thread, NULL, dispatcherRoutine, NULL);
 /*    for (int i = 0; i < reporterQueues.size(); ++i) {
         auto thread = &reporterThreads[i];
         pthread_join(*thread, NULL);
     }*/
-    pthread_join(dispatcher_thread, NULL);
+    pthread_create(&sorterThread, NULL, sorterRoutine ,NULL);
+    pthread_join(sorterThread, NULL);
 
 }
 

@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-enum ReportType {SPORTS, NEWS, WEATHER};
+enum ReportType {SPORTS, NEWS, WEATHER, ERROR};
 class Report {
 private:
     unsigned int _producerId, _reportId;
@@ -18,6 +18,7 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Report &report);
     bool isEndingReport();
     std::string toString() const;
+    static ReportType getReportType(const std::string& rep);
 };
 
 

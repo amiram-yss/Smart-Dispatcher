@@ -564,8 +564,6 @@ CMakeFiles/OS3.dir/ReporterHandler.cpp.o: ../ReporterHandler.cpp \
   /usr/include/c++/11/bits/basic_string.tcc \
   /usr/include/semaphore.h \
   /usr/include/x86_64-linux-gnu/bits/semaphore.h \
-  ../ConfigurationHandler.h \
-  ../Report.h \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \
@@ -594,7 +592,9 @@ CMakeFiles/OS3.dir/ReporterHandler.cpp.o: ../ReporterHandler.cpp \
   /usr/include/c++/11/bits/basic_ios.tcc \
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/istream \
-  /usr/include/c++/11/bits/istream.tcc
+  /usr/include/c++/11/bits/istream.tcc \
+  ../ConfigurationHandler.h \
+  ../Report.h
 
 CMakeFiles/OS3.dir/main.cpp.o: ../main.cpp \
   /usr/include/stdc-predef.h \

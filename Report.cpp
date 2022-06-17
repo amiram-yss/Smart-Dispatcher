@@ -56,3 +56,13 @@ std::string Report::toString() const{
     str += " " + std::to_string(_reportId);
     return str;
 }
+
+ReportType Report::getReportType(const std::string& rep) {
+    if (rep.find("SPORTS") != std::string::npos)
+        return SPORTS;
+    if (rep.find("NEWS") != std::string::npos)
+        return NEWS;
+    if (rep.find("WEATHER") != std::string::npos)
+        return WEATHER;
+    return ERROR;
+}
