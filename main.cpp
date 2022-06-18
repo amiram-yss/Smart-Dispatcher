@@ -23,6 +23,8 @@ int screenBufferSize;
 static BoundedQueue<std::string> screenBuffer;
 static pthread_t screenManagerThread;
 
+static pthread_mutex_t _printLock;
+
 bool init() {
     srand(time(NULL));
     std::vector<ConfigurationHandler::ConfigurationItem> *configs = ConfigurationHandler::ReadConfig("config_s.txt", &screenBufferSize);
@@ -34,10 +36,10 @@ bool init() {
     reporterThreads = std::vector<pthread_t>();
     reporterThreads.resize(reporterQueues.size());
     //dispatcher = UnboundedQueue<std::string>();
-    typeSortedQueueCollection.resize(sizeof (ReportType) - 1);
-    coEditorThreadCollection = std::vector<pthread_t>();
-    coEditorThreadCollection.resize(sizeof(ReportType) - 1);
+    typeSortedQueueCollection = std::vector<UnboundedQueue<std::string>>(sizeof (ReportType) - 1);
+    coEditorThreadCollection = std::vector<pthread_t>(sizeof(ReportType) - 1);
     screenBuffer = BoundedQueue<std::string>(screenBufferSize);
+    pthread_mutex_init(&_printLock, nullptr);
     return true;
 }
 
@@ -74,8 +76,8 @@ void *dispatcherRoutine(void *params) {
     }
     //dispatcher.push("DONE");
     typeSortedQueueCollection[SPORTS].push("DONE");
-    typeSortedQueueCollection[WEATHER].push("DONE");
-    typeSortedQueueCollection[NEWS].push("DONE");
+    //typeSortedQueueCollection[WEATHER].push("DONE");
+    //typeSortedQueueCollection[NEWS].push("DONE");
 }
 
 void categorizeReport(std::string report) {
@@ -83,45 +85,41 @@ void categorizeReport(std::string report) {
     typeSortedQueueCollection[type].push(report);
 }
 
-void editReport() {
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+inline void editReport() {
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000000));
+    //usleep(1000000);
 }
 
 void *coEditorRoutine(void *params){
     auto type = *((ReportType*)params);
-    auto queue = typeSortedQueueCollection[type];
-    auto rep = queue.pop();
+    //UnboundedQueue<std::string>& queue = typeSortedQueueCollection[type];
+    auto queue = &typeSortedQueueCollection[type];
+    //std::cout << type << std::endl;
+    auto rep = queue->pop();
     while (rep != "DONE") {
-        editReport();
-        screenBuffer.push(rep);
-        rep = queue.pop();
-//        std::cout << rep << std::endl;
+        //editReport();
+        //screenBuffer.push(rep);
+        //std::cout << rep << std::endl;
+        rep = queue->pop();
     }
-    queue.push("DONE");
+    screenBuffer.push("DONE");
 }
 
 void screenManagerRoutine() {
-   /* char doneCounter = 3;
-    while (doneCounter) {
-        auto report = screenBuffer.pop();
-        if (report == "DONE") {
-            doneCounter--;
-            continue;
-        }
-        std::cout << report <<std::endl;
-    }
-    std::cout << "DONE" << std::endl;*/
-    int left = 3;
-    while (1) {
+
+    int left = typeSortedQueueCollection.size();
+    while (left) {
         auto res = screenBuffer.pop();
-/*        if(res == "DONE") {
-            std::cout << --left << std::endl;
-        }*/
-        std::cout << screenBuffer.pop() << std::endl;
+        if(res == "DONE") {
+            std::cout << screenBuffer.pop() << std::endl;
+            //std::cout << std::to_string(--left) << std::endl;
+        }
+        std::cout << "DONE" << std::endl;
     }
 }
 
 void routine() {
+
     for (int i = 0; i < reporterQueues.size(); ++i) {
         auto thread = &reporterThreads[i];
         auto param = (void *) &reporterQueues[i];
@@ -134,7 +132,22 @@ void routine() {
         auto thread = &coEditorThreadCollection[i];
         pthread_create(thread, NULL, coEditorRoutine, (void *)(&reportTypes[i]));
     }
+
+    //pthread_create(&coEditorThreadCollection[0], nullptr, coEditorRoutine, (void *)(&reportTypes[0]));
+    //pthread_create(&coEditorThreadCollection[1], nullptr, coEditorRoutine, (void *)(&reportTypes[1]));
+    //pthread_create(&coEditorThreadCollection[2], nullptr, coEditorRoutine, (void *)(&reportTypes[2]));
+
+
+/*    for (int i = 0; i < coEditorThreadCollection.size(); ++i) {
+        auto thread = &coEditorThreadCollection[i];
+        pthread_join(*thread, NULL);
+    }*/
+
+    //pthread_join(coEditorThreadCollection[0], nullptr);
+    //pthread_join(coEditorThreadCollection[1], nullptr);
+    //pthread_join(coEditorThreadCollection[2], nullptr);
     screenManagerRoutine();
+
     NULL;
 }
 

@@ -31,11 +31,20 @@ public:
     void push(T var) {
         //wait as long as queue full
         sem_wait(&_empty); //empty--;
-        pthread_mutex_lock(&_lock); //lock mutex
-        _queue.push(var);
-        sem_post(&_full); //full++;
-        pthread_mutex_unlock(&_lock); //unlock
+        {
+            pthread_mutex_lock(&_lock); //lock mutex
+
+            //std::cout<< "   >> BOUNDED PUSH: " << var << std::endl;
+
+            _queue.push(var);
+            sem_post(&_full); //full++;
+            pthread_mutex_unlock(&_lock); //unlock
+        }
+
+        //std::cout<< "   !! BOUNDED PUSH: " << var << std::endl;
     }
+
+    //TODO destructor
 
     T pop() {
         //wait as long as there are no nodes in queue
@@ -45,9 +54,13 @@ public:
             return nullptr;*/
         T t = _queue.front();
         _queue.pop();
+
+        //std::cout<< "   >> BOUNDED POP: " << t << std::endl;
+
         sem_post(&_empty); //empty++
         //removing 1 value
         pthread_mutex_unlock(&_lock);
+        //std::cout<< "   !! BOUNDED POP: " << t << std::endl;
         return t;
     }
 
