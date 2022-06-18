@@ -1,0 +1,20 @@
+class Mutex - owns pthread_mutex, init on ctor, destroy on dtor, lock and unlock
+class MutexScope - owns Mutex, calls Mutex lock on ctor, unlock on dtor
+
+---------- USE ---------------------
+class MyClass
+{
+private:
+    Mutex _my_mutex;
+
+public:
+    void func()
+    {
+    // want to lock _my_mutex so open scope:
+        {
+            MutexScope mutex_scope(_my_mutex);
+            // HERE it's locked
+        }
+        // NOT ANYMORE
+    }
+}

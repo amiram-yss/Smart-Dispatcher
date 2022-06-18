@@ -16,18 +16,16 @@ static pthread_t dispatcher_thread;
 //Dispatcher dispatcher;
 // TODO check how to do this non static
 //static UnboundedQueue<std::string> dispatcher;
-static std::vector<UnboundedQueue<std::string>> typeSortedQueueCollection;
+static std::vector<UnboundedQueue<std::string>> dispatcherQueues;
 static ReportType reportTypes[] = {SPORTS, NEWS, WEATHER};
 static std::vector<pthread_t> coEditorThreadCollection;
 int screenBufferSize;
 static BoundedQueue<std::string> screenBuffer;
-static pthread_t screenManagerThread;
 
-static pthread_mutex_t _printLock;
 
 bool init() {
     srand(time(NULL));
-    std::vector<ConfigurationHandler::ConfigurationItem> *configs = ConfigurationHandler::ReadConfig("config_s.txt", &screenBufferSize);
+    std::vector<ConfigurationHandler::ConfigurationItem> *configs = ConfigurationHandler::ReadConfig("config.txt", &screenBufferSize);
     if (configs == nullptr)
         return false;
     for (auto conf: *configs) {
@@ -36,10 +34,9 @@ bool init() {
     reporterThreads = std::vector<pthread_t>();
     reporterThreads.resize(reporterQueues.size());
     //dispatcher = UnboundedQueue<std::string>();
-    typeSortedQueueCollection = std::vector<UnboundedQueue<std::string>>(sizeof (ReportType) - 1);
+    dispatcherQueues = std::vector<UnboundedQueue<std::string>>(sizeof (ReportType) - 1);
     coEditorThreadCollection = std::vector<pthread_t>(sizeof(ReportType) - 1);
     screenBuffer = BoundedQueue<std::string>(screenBufferSize);
-    pthread_mutex_init(&_printLock, nullptr);
     return true;
 }
 
@@ -75,14 +72,14 @@ void *dispatcherRoutine(void *params) {
             break;
     }
     //dispatcher.push("DONE");
-    typeSortedQueueCollection[SPORTS].push("DONE");
-    //typeSortedQueueCollection[WEATHER].push("DONE");
-    //typeSortedQueueCollection[NEWS].push("DONE");
+    dispatcherQueues[SPORTS].push("DONE");
+    dispatcherQueues[WEATHER].push("DONE");
+    dispatcherQueues[NEWS].push("DONE");
 }
 
 void categorizeReport(std::string report) {
     auto type = Report::getReportType(report);
-    typeSortedQueueCollection[type].push(report);
+    dispatcherQueues[type].push(report);
 }
 
 inline void editReport() {
@@ -92,13 +89,14 @@ inline void editReport() {
 
 void *coEditorRoutine(void *params){
     auto type = *((ReportType*)params);
-    //UnboundedQueue<std::string>& queue = typeSortedQueueCollection[type];
-    auto queue = &typeSortedQueueCollection[type];
+    //UnboundedQueue<std::string>& queue = dispatcherQueues[type];
+    auto queue = &dispatcherQueues[type];
     //std::cout << type << std::endl;
     auto rep = queue->pop();
     while (rep != "DONE") {
+        //std::cout<<rep<<std::endl;
         //editReport();
-        //screenBuffer.push(rep);
+        screenBuffer.push(rep);
         //std::cout << rep << std::endl;
         rep = queue->pop();
     }
@@ -106,16 +104,16 @@ void *coEditorRoutine(void *params){
 }
 
 void screenManagerRoutine() {
-
-    int left = typeSortedQueueCollection.size();
+    int left = dispatcherQueues.size();
     while (left) {
         auto res = screenBuffer.pop();
         if(res == "DONE") {
-            std::cout << screenBuffer.pop() << std::endl;
-            //std::cout << std::to_string(--left) << std::endl;
+            --left;
+            continue;
         }
-        std::cout << "DONE" << std::endl;
+        std::cout << res << std::endl;
     }
+    std::cout << "DONE" << std::endl;
 }
 
 void routine() {

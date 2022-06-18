@@ -24,18 +24,18 @@ public:
         sem_init(&_full, 0, 0);
         //pthread_mutex_unlock(&_lock);
         pthread_mutex_init(&_lock, nullptr);
-        std::cout << "THIS ADDRESS: " << this << std::endl;
-        std::cout << "INITED SEM ADDRESS: " << &_full << std::endl;
+        /*std::cout << "THIS ADDRESS: " << this << std::endl;
+        std::cout << "INITED SEM ADDRESS: " << &_full << std::endl;*/
     }
 
     //TODO destructor
     //std::string pop() {
     T pop() {
         //wait until there is at least 1 object in queue
-        std::cout<<"PRE POP THIS ADDRESS: " << this << std::endl;
-        std::cout<<"PRE POP SEM WAIT: " << &_full << std::endl;
+        /*std::cout<<"PRE POP THIS ADDRESS: " << this << std::endl;
+        std::cout<<"PRE POP SEM WAIT: " << &_full << std::endl;*/
         sem_wait(&_full);
-        std::cout<<"POST POP SEM WAIT: " <<std::endl;
+        //std::cout<<"POST POP SEM WAIT: " <<std::endl;
         // lock queue
         pthread_mutex_lock(&_lock);
         //do operations on queue
@@ -54,9 +54,6 @@ public:
 
     void push(T str) {
         // no limitation here. just lock and proceed
-/*        auto yichs = pthread_mutex_trylock(&_lock);
-        if(yichs)
-            std::cout<<"oof " << yichs <<std::endl;*/
         pthread_mutex_lock(&_lock);
         //push
         _queue.push(str);
@@ -67,7 +64,7 @@ public:
         //std::cout<< "!! UNBOUNDED PUSH: " << str << std::endl;
         //std::cout << "GUSH" << &_full << std::endl;
         int x = sem_post(&_full); //full++
-        std::cout << "SEM code " << std::to_string(x) << std::endl;
+        //std::cout << "SEM code " << std::to_string(x) << std::endl;
     }
 
 
