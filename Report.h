@@ -17,7 +17,6 @@ public:
     Report();
     Report(unsigned int producerId, unsigned int reportId);
     friend std::ostream& operator<<(std::ostream& os, const Report &report);
-    bool isEndingReport();
     std::string toString() const;
     static ReportType getReportType(const std::string& rep);
 };

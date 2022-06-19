@@ -12,6 +12,8 @@ std::vector <ConfigurationHandler::ConfigurationItem>
 
     std::vector<ConfigurationItem>* vtr = new std::vector<ConfigurationItem>();
     std::ifstream confFile(confFileName);
+    if(!confFile.good())
+        return nullptr;
     std::string line;
     while (std::getline(confFile,line)) {
         while (line == "\n")

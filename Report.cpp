@@ -25,10 +25,6 @@ std::ostream &operator<<(std::ostream &os, const Report &report) {
     return os;
 }
 
-bool Report::isEndingReport() {
-    return _reportId == -1;
-}
-
 std::string Report::toString() const{
     std::string str = "producer " + std::to_string(this->_producerId) + " ";
     switch (_type) {

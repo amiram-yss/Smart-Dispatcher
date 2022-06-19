@@ -7,44 +7,49 @@
 #include <chrono>
 #include <thread>
 
-
-//Collections
-//static std::vector<ConfigurationHandler::ConfigurationItem> *configs;
+//Data
 static std::vector<ReporterHandler> reporterQueues;
+static std::vector<UnboundedQueue<std::string>> dispatcherQueues;
+static BoundedQueue<std::string> screenBuffer;
+static const ReportType reportTypes[] = {SPORTS, NEWS, WEATHER};
+
+//Threads
 static std::vector<pthread_t> reporterThreads;
 static pthread_t dispatcher_thread;
-//Dispatcher dispatcher;
-// TODO check how to do this non static
-//static UnboundedQueue<std::string> dispatcher;
-static std::vector<UnboundedQueue<std::string>> dispatcherQueues;
-static ReportType reportTypes[] = {SPORTS, NEWS, WEATHER};
 static std::vector<pthread_t> coEditorThreadCollection;
-int screenBufferSize;
-static BoundedQueue<std::string> screenBuffer;
 
-
-bool init() {
+bool init(std::string fileName) {
+    // For good randomization.
     srand(time(NULL));
-    std::vector<ConfigurationHandler::ConfigurationItem> *configs = ConfigurationHandler::ReadConfig("config.txt", &screenBufferSize);
+    // Read config.
+    int screenBufferSize;
+    std::vector<ConfigurationHandler::ConfigurationItem> *configs = ConfigurationHandler::ReadConfig(fileName, &screenBufferSize);
+    // If file loading fails, return false
     if (configs == nullptr)
         return false;
     for (auto conf: *configs) {
         reporterQueues.push_back(ReporterHandler(conf));
     }
+    delete configs;
+    // Init threads
     reporterThreads = std::vector<pthread_t>();
     reporterThreads.resize(reporterQueues.size());
-    //dispatcher = UnboundedQueue<std::string>();
-    dispatcherQueues = std::vector<UnboundedQueue<std::string>>(sizeof (ReportType) - 1);
     coEditorThreadCollection = std::vector<pthread_t>(sizeof(ReportType) - 1);
+    // Init queues
+    dispatcherQueues = std::vector<UnboundedQueue<std::string>>(sizeof (ReportType) - 1);
     screenBuffer = BoundedQueue<std::string>(screenBufferSize);
+    // Initialization success :)
     return true;
 }
 
-void categorizeReport(std::string basicString);
-
-void *singleReporterRoutine(void *repHandler) { //ConfigurationHandler::ConfigurationItem
+void *singleReporterRoutine(void *repHandler) {
     auto reporter = (ReporterHandler *) repHandler;
     reporter->makeReports();
+}
+
+void categorizeReport(std::string report) {
+    auto type = Report::getReportType(report);
+    dispatcherQueues[type].push(report);
 }
 
 void *dispatcherRoutine(void *params) {
@@ -64,42 +69,36 @@ void *dispatcherRoutine(void *params) {
                 continue;
             }
             //Atomic insertion to queue
-            //dispatcher.push(result);
             categorizeReport(result);
             finished = false;
         }
         if (finished)
             break;
     }
-    //dispatcher.push("DONE");
     dispatcherQueues[SPORTS].push("DONE");
     dispatcherQueues[WEATHER].push("DONE");
     dispatcherQueues[NEWS].push("DONE");
 }
 
-void categorizeReport(std::string report) {
-    auto type = Report::getReportType(report);
-    dispatcherQueues[type].push(report);
-}
-
-inline void editReport() {
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000000));
-    //usleep(1000000);
+void editReport() {
+    // Good job editor lol, what a waste of money :|
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
 }
 
 void *coEditorRoutine(void *params){
     auto type = *((ReportType*)params);
     //UnboundedQueue<std::string>& queue = dispatcherQueues[type];
     auto queue = &dispatcherQueues[type];
-    //std::cout << type << std::endl;
     auto rep = queue->pop();
     while (rep != "DONE") {
-        //std::cout<<rep<<std::endl;
-        //editReport();
+        //Make an edit (basically nothing)..
+        editReport();
+        //Push to monitor buffer.
         screenBuffer.push(rep);
-        //std::cout << rep << std::endl;
+        //Upload next report.
         rep = queue->pop();
     }
+    // All dispatcher specific queue reports are submitted, end with a DONE message.
     screenBuffer.push("DONE");
 }
 
@@ -130,27 +129,11 @@ void routine() {
         auto thread = &coEditorThreadCollection[i];
         pthread_create(thread, NULL, coEditorRoutine, (void *)(&reportTypes[i]));
     }
-
-    //pthread_create(&coEditorThreadCollection[0], nullptr, coEditorRoutine, (void *)(&reportTypes[0]));
-    //pthread_create(&coEditorThreadCollection[1], nullptr, coEditorRoutine, (void *)(&reportTypes[1]));
-    //pthread_create(&coEditorThreadCollection[2], nullptr, coEditorRoutine, (void *)(&reportTypes[2]));
-
-
-/*    for (int i = 0; i < coEditorThreadCollection.size(); ++i) {
-        auto thread = &coEditorThreadCollection[i];
-        pthread_join(*thread, NULL);
-    }*/
-
-    //pthread_join(coEditorThreadCollection[0], nullptr);
-    //pthread_join(coEditorThreadCollection[1], nullptr);
-    //pthread_join(coEditorThreadCollection[2], nullptr);
     screenManagerRoutine();
-
-    NULL;
 }
 
 int main(int argc, char *argv[]) {
-    if(!init())
+    if(argc < 2 || !init(argv[1]))
         return 1;
     routine();
     return 0;
