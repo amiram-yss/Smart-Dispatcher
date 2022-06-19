@@ -17,7 +17,6 @@ private:
     sem_t _empty, _full;
     unsigned int _capacity;
 
-
 public:
     BoundedQueue(unsigned int capacity = 0) : _capacity(capacity), _queue() {
         sem_init(&_full, 0, 0);

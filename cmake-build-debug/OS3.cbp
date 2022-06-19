@@ -82,7 +82,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/amiramyss/CLionProjects/OS3/BoundedQueue.h">
+		<Unit filename="/home/amiramyss/CLionProjects/OS3/BoundedQueue.cpp">
 			<Option target="OS3"/>
 		</Unit>
 		<Unit filename="/home/amiramyss/CLionProjects/OS3/ConfigurationHandler.cpp">
@@ -103,7 +103,7 @@
 		<Unit filename="/home/amiramyss/CLionProjects/OS3/ReporterHandler.h">
 			<Option target="OS3"/>
 		</Unit>
-		<Unit filename="/home/amiramyss/CLionProjects/OS3/UnboundedQueue.h">
+		<Unit filename="/home/amiramyss/CLionProjects/OS3/UnboundedQueue.cpp">
 			<Option target="OS3"/>
 		</Unit>
 		<Unit filename="/home/amiramyss/CLionProjects/OS3/main.cpp">

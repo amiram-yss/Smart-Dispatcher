@@ -57,7 +57,7 @@ CMakeFiles/OS3.dir/ReporterHandler.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
  /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
- /home/amiramyss/CLionProjects/OS3/BoundedQueue.h \
+ /home/amiramyss/CLionProjects/OS3/BoundedQueue.cpp \
  /usr/include/c++/11/queue /usr/include/c++/11/deque \
  /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/c++/11/bits/functexcept.h \

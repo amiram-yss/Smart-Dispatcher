@@ -142,7 +142,7 @@ CMakeFiles/OS3.dir/main.cpp.o: /home/amiramyss/CLionProjects/OS3/main.cpp \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/amiramyss/CLionProjects/OS3/BoundedQueue.h \
+ /home/amiramyss/CLionProjects/OS3/BoundedQueue.cpp \
  /usr/include/c++/11/queue /usr/include/c++/11/deque \
  /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_deque.h /usr/include/c++/11/bits/deque.tcc \
@@ -152,7 +152,7 @@ CMakeFiles/OS3.dir/main.cpp.o: /home/amiramyss/CLionProjects/OS3/main.cpp \
  /usr/include/c++/11/bits/stl_queue.h \
  /usr/include/c++/11/bits/uses_allocator.h /usr/include/semaphore.h \
  /usr/include/x86_64-linux-gnu/bits/semaphore.h \
- /home/amiramyss/CLionProjects/OS3/UnboundedQueue.h \
+ /home/amiramyss/CLionProjects/OS3/UnboundedQueue.cpp \
  /home/amiramyss/CLionProjects/OS3/ConfigurationHandler.h \
  /home/amiramyss/CLionProjects/OS3/Report.h \
  /home/amiramyss/CLionProjects/OS3/ReporterHandler.h \

@@ -1,6 +1,6 @@
 #include <iostream>
-#include "BoundedQueue.h"
-#include "UnboundedQueue.h"
+#include "BoundedQueue.cpp"
+#include "UnboundedQueue.cpp"
 #include "ConfigurationHandler.h"
 #include "Report.h"
 #include "ReporterHandler.h"

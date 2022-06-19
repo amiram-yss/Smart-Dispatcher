@@ -129,6 +129,30 @@ OS3/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/build
 .PHONY : OS3/fast
 
+BoundedQueue.o: BoundedQueue.cpp.o
+.PHONY : BoundedQueue.o
+
+# target to build an object file
+BoundedQueue.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/BoundedQueue.cpp.o
+.PHONY : BoundedQueue.cpp.o
+
+BoundedQueue.i: BoundedQueue.cpp.i
+.PHONY : BoundedQueue.i
+
+# target to preprocess a source file
+BoundedQueue.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/BoundedQueue.cpp.i
+.PHONY : BoundedQueue.cpp.i
+
+BoundedQueue.s: BoundedQueue.cpp.s
+.PHONY : BoundedQueue.s
+
+# target to generate assembly for a file
+BoundedQueue.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/BoundedQueue.cpp.s
+.PHONY : BoundedQueue.cpp.s
+
 ConfigurationHandler.o: ConfigurationHandler.cpp.o
 .PHONY : ConfigurationHandler.o
 
@@ -201,6 +225,30 @@ ReporterHandler.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/ReporterHandler.cpp.s
 .PHONY : ReporterHandler.cpp.s
 
+UnboundedQueue.o: UnboundedQueue.cpp.o
+.PHONY : UnboundedQueue.o
+
+# target to build an object file
+UnboundedQueue.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/UnboundedQueue.cpp.o
+.PHONY : UnboundedQueue.cpp.o
+
+UnboundedQueue.i: UnboundedQueue.cpp.i
+.PHONY : UnboundedQueue.i
+
+# target to preprocess a source file
+UnboundedQueue.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/UnboundedQueue.cpp.i
+.PHONY : UnboundedQueue.cpp.i
+
+UnboundedQueue.s: UnboundedQueue.cpp.s
+.PHONY : UnboundedQueue.s
+
+# target to generate assembly for a file
+UnboundedQueue.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/UnboundedQueue.cpp.s
+.PHONY : UnboundedQueue.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -234,6 +282,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... OS3"
+	@echo "... BoundedQueue.o"
+	@echo "... BoundedQueue.i"
+	@echo "... BoundedQueue.s"
 	@echo "... ConfigurationHandler.o"
 	@echo "... ConfigurationHandler.i"
 	@echo "... ConfigurationHandler.s"
@@ -243,6 +294,9 @@ help:
 	@echo "... ReporterHandler.o"
 	@echo "... ReporterHandler.i"
 	@echo "... ReporterHandler.s"
+	@echo "... UnboundedQueue.o"
+	@echo "... UnboundedQueue.i"
+	@echo "... UnboundedQueue.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

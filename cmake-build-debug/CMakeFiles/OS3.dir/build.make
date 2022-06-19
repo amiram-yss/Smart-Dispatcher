@@ -97,10 +97,38 @@ CMakeFiles/OS3.dir/ConfigurationHandler.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OS3.dir/ConfigurationHandler.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/amiramyss/CLionProjects/OS3/ConfigurationHandler.cpp -o CMakeFiles/OS3.dir/ConfigurationHandler.cpp.s
 
+CMakeFiles/OS3.dir/BoundedQueue.cpp.o: CMakeFiles/OS3.dir/flags.make
+CMakeFiles/OS3.dir/BoundedQueue.cpp.o: ../BoundedQueue.cpp
+CMakeFiles/OS3.dir/BoundedQueue.cpp.o: CMakeFiles/OS3.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/amiramyss/CLionProjects/OS3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/OS3.dir/BoundedQueue.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OS3.dir/BoundedQueue.cpp.o -MF CMakeFiles/OS3.dir/BoundedQueue.cpp.o.d -o CMakeFiles/OS3.dir/BoundedQueue.cpp.o -c /home/amiramyss/CLionProjects/OS3/BoundedQueue.cpp
+
+CMakeFiles/OS3.dir/BoundedQueue.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OS3.dir/BoundedQueue.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/amiramyss/CLionProjects/OS3/BoundedQueue.cpp > CMakeFiles/OS3.dir/BoundedQueue.cpp.i
+
+CMakeFiles/OS3.dir/BoundedQueue.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OS3.dir/BoundedQueue.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/amiramyss/CLionProjects/OS3/BoundedQueue.cpp -o CMakeFiles/OS3.dir/BoundedQueue.cpp.s
+
+CMakeFiles/OS3.dir/UnboundedQueue.cpp.o: CMakeFiles/OS3.dir/flags.make
+CMakeFiles/OS3.dir/UnboundedQueue.cpp.o: ../UnboundedQueue.cpp
+CMakeFiles/OS3.dir/UnboundedQueue.cpp.o: CMakeFiles/OS3.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/amiramyss/CLionProjects/OS3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/OS3.dir/UnboundedQueue.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OS3.dir/UnboundedQueue.cpp.o -MF CMakeFiles/OS3.dir/UnboundedQueue.cpp.o.d -o CMakeFiles/OS3.dir/UnboundedQueue.cpp.o -c /home/amiramyss/CLionProjects/OS3/UnboundedQueue.cpp
+
+CMakeFiles/OS3.dir/UnboundedQueue.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OS3.dir/UnboundedQueue.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/amiramyss/CLionProjects/OS3/UnboundedQueue.cpp > CMakeFiles/OS3.dir/UnboundedQueue.cpp.i
+
+CMakeFiles/OS3.dir/UnboundedQueue.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OS3.dir/UnboundedQueue.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/amiramyss/CLionProjects/OS3/UnboundedQueue.cpp -o CMakeFiles/OS3.dir/UnboundedQueue.cpp.s
+
 CMakeFiles/OS3.dir/Report.cpp.o: CMakeFiles/OS3.dir/flags.make
 CMakeFiles/OS3.dir/Report.cpp.o: ../Report.cpp
 CMakeFiles/OS3.dir/Report.cpp.o: CMakeFiles/OS3.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/amiramyss/CLionProjects/OS3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/OS3.dir/Report.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/amiramyss/CLionProjects/OS3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/OS3.dir/Report.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OS3.dir/Report.cpp.o -MF CMakeFiles/OS3.dir/Report.cpp.o.d -o CMakeFiles/OS3.dir/Report.cpp.o -c /home/amiramyss/CLionProjects/OS3/Report.cpp
 
 CMakeFiles/OS3.dir/Report.cpp.i: cmake_force
@@ -114,7 +142,7 @@ CMakeFiles/OS3.dir/Report.cpp.s: cmake_force
 CMakeFiles/OS3.dir/ReporterHandler.cpp.o: CMakeFiles/OS3.dir/flags.make
 CMakeFiles/OS3.dir/ReporterHandler.cpp.o: ../ReporterHandler.cpp
 CMakeFiles/OS3.dir/ReporterHandler.cpp.o: CMakeFiles/OS3.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/amiramyss/CLionProjects/OS3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/OS3.dir/ReporterHandler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/amiramyss/CLionProjects/OS3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/OS3.dir/ReporterHandler.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OS3.dir/ReporterHandler.cpp.o -MF CMakeFiles/OS3.dir/ReporterHandler.cpp.o.d -o CMakeFiles/OS3.dir/ReporterHandler.cpp.o -c /home/amiramyss/CLionProjects/OS3/ReporterHandler.cpp
 
 CMakeFiles/OS3.dir/ReporterHandler.cpp.i: cmake_force
@@ -129,6 +157,8 @@ CMakeFiles/OS3.dir/ReporterHandler.cpp.s: cmake_force
 OS3_OBJECTS = \
 "CMakeFiles/OS3.dir/main.cpp.o" \
 "CMakeFiles/OS3.dir/ConfigurationHandler.cpp.o" \
+"CMakeFiles/OS3.dir/BoundedQueue.cpp.o" \
+"CMakeFiles/OS3.dir/UnboundedQueue.cpp.o" \
 "CMakeFiles/OS3.dir/Report.cpp.o" \
 "CMakeFiles/OS3.dir/ReporterHandler.cpp.o"
 
@@ -137,11 +167,13 @@ OS3_EXTERNAL_OBJECTS =
 
 OS3: CMakeFiles/OS3.dir/main.cpp.o
 OS3: CMakeFiles/OS3.dir/ConfigurationHandler.cpp.o
+OS3: CMakeFiles/OS3.dir/BoundedQueue.cpp.o
+OS3: CMakeFiles/OS3.dir/UnboundedQueue.cpp.o
 OS3: CMakeFiles/OS3.dir/Report.cpp.o
 OS3: CMakeFiles/OS3.dir/ReporterHandler.cpp.o
 OS3: CMakeFiles/OS3.dir/build.make
 OS3: CMakeFiles/OS3.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/amiramyss/CLionProjects/OS3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable OS3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/amiramyss/CLionProjects/OS3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable OS3"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/OS3.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -5,7 +5,7 @@
 #pragma once
 
 #include <csignal>
-#include "BoundedQueue.h"
+#include "BoundedQueue.cpp"
 #include "ConfigurationHandler.h"
 #include "Report.h"
 
