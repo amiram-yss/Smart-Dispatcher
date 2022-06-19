@@ -2,8 +2,7 @@
 // Created by amiramyss on 6/9/22.
 //
 
-#ifndef OS3_CONFIGURATIONHANDLER_H
-#define OS3_CONFIGURATIONHANDLER_H
+#pragma once
 
 #include <vector>
 #include <string>
@@ -17,6 +16,3 @@ public:
 private:
 
 };
-
-
-#endif //OS3_CONFIGURATIONHANDLER_H
