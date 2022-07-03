@@ -45,6 +45,7 @@ bool init(std::string fileName) {
 void *singleReporterRoutine(void *repHandler) {
     auto reporter = (ReporterHandler *) repHandler;
     reporter->makeReports();
+    return nullptr;
 }
 
 void categorizeReport(std::string report) {
@@ -78,6 +79,7 @@ void *dispatcherRoutine(void *params) {
     dispatcherQueues[SPORTS].push("DONE");
     dispatcherQueues[WEATHER].push("DONE");
     dispatcherQueues[NEWS].push("DONE");
+    return nullptr;
 }
 
 void editReport() {
@@ -100,6 +102,7 @@ void *coEditorRoutine(void *params){
     }
     // All dispatcher specific queue reports are submitted, end with a DONE message.
     screenBuffer.push("DONE");
+    return nullptr;
 }
 
 void screenManagerRoutine() {

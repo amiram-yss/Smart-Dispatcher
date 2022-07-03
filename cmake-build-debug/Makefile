@@ -48,10 +48,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/193/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/199/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/193/bin/cmake/linux/bin/cmake -E rm -f
+RM = /snap/clion/199/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /home/amiramyss/CLionProjects/OS3/cmake-build-debug
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/193/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/199/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -78,7 +78,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/193/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/199/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -273,6 +273,54 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+mutex.o: mutex.cpp.o
+.PHONY : mutex.o
+
+# target to build an object file
+mutex.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/mutex.cpp.o
+.PHONY : mutex.cpp.o
+
+mutex.i: mutex.cpp.i
+.PHONY : mutex.i
+
+# target to preprocess a source file
+mutex.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/mutex.cpp.i
+.PHONY : mutex.cpp.i
+
+mutex.s: mutex.cpp.s
+.PHONY : mutex.s
+
+# target to generate assembly for a file
+mutex.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/mutex.cpp.s
+.PHONY : mutex.cpp.s
+
+mutex_scope.o: mutex_scope.cpp.o
+.PHONY : mutex_scope.o
+
+# target to build an object file
+mutex_scope.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/mutex_scope.cpp.o
+.PHONY : mutex_scope.cpp.o
+
+mutex_scope.i: mutex_scope.cpp.i
+.PHONY : mutex_scope.i
+
+# target to preprocess a source file
+mutex_scope.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/mutex_scope.cpp.i
+.PHONY : mutex_scope.cpp.i
+
+mutex_scope.s: mutex_scope.cpp.s
+.PHONY : mutex_scope.s
+
+# target to generate assembly for a file
+mutex_scope.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/mutex_scope.cpp.s
+.PHONY : mutex_scope.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -300,6 +348,12 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... mutex.o"
+	@echo "... mutex.i"
+	@echo "... mutex.s"
+	@echo "... mutex_scope.o"
+	@echo "... mutex_scope.i"
+	@echo "... mutex_scope.s"
 .PHONY : help
 
 

@@ -11,6 +11,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/OS3.dir/UnboundedQueue.cpp.o.d"
   "CMakeFiles/OS3.dir/main.cpp.o"
   "CMakeFiles/OS3.dir/main.cpp.o.d"
+  "CMakeFiles/OS3.dir/mutex.cpp.o"
+  "CMakeFiles/OS3.dir/mutex.cpp.o.d"
+  "CMakeFiles/OS3.dir/mutex_scope.cpp.o"
+  "CMakeFiles/OS3.dir/mutex_scope.cpp.o.d"
   "OS3"
   "OS3.pdb"
 )

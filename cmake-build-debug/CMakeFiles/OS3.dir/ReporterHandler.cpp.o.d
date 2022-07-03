@@ -189,5 +189,7 @@ CMakeFiles/OS3.dir/ReporterHandler.cpp.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
+ /home/amiramyss/CLionProjects/OS3/mutex.h \
+ /home/amiramyss/CLionProjects/OS3/mutex_scope.h \
  /home/amiramyss/CLionProjects/OS3/ConfigurationHandler.h \
  /home/amiramyss/CLionProjects/OS3/Report.h
