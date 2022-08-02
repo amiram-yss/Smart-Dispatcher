@@ -7,6 +7,7 @@
 #include <string>
 #include <semaphore.h>
 #include <iostream>
+#include <memory>
 #include "Mutex.h"
 #include "MutexScope.h"
 #include "Semaphore.h"
@@ -19,8 +20,8 @@ private:
     Mutex _lock;
     //sem_t _empty, _full;
     unsigned int _capacity;
-    Semaphore* _empty;
-    Semaphore* _full;
+    std::shared_ptr<Semaphore> _empty;
+    std::shared_ptr<Semaphore> _full;
 
 public:
 
@@ -79,6 +80,8 @@ public:
         /*sem_close(&_empty);
         sem_destroy(&_empty);
         sem_close(&_full);
-        sem_destroy(&_full);*/
+        sem_destroy(&_full);*//*
+        delete _full;
+        delete _empty;*/
     }
 };
