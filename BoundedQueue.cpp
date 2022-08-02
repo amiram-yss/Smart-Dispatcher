@@ -7,21 +7,21 @@
 #include <string>
 #include <semaphore.h>
 #include <iostream>
-#include "mutex.h"
-#include "mutex_scope.h"
+#include "Mutex.h"
+#include "MutexScope.h"
 
 template<class T>
 class BoundedQueue {
 private:
     std::queue<T> _queue;
     //pthread_mutex_t _lock;
-    mutex _lock;
+    Mutex _lock;
     sem_t _empty, _full;
     unsigned int _capacity;
 
 public:
 
-    BoundedQueue(unsigned int capacity = 0) : _capacity(capacity), _queue(), _lock(mutex()) {
+    BoundedQueue(unsigned int capacity = 0) : _capacity(capacity), _queue(), _lock(Mutex()) {
         sem_init(&_full, 0, 0);
         sem_init(&_empty, 0, _capacity);
     }
@@ -30,7 +30,7 @@ public:
         //wait as long as queue full
         sem_wait(&_empty); //empty--;
         {
-            mutex_scope scope(_lock);
+            MutexScope scope(_lock);
             _queue.push(var);
             sem_post(&_full); //full++;
         }
@@ -42,7 +42,7 @@ public:
         sem_wait(&_full); //full--
         {
             //pthread_mutex_lock(&_lock);
-            mutex_scope scope(_lock);
+            MutexScope scope(_lock);
             t = _queue.front();
             _queue.pop();
 
@@ -57,7 +57,7 @@ public:
         T str;
         //pthread_mutex_lock(&_lock);
         {
-            mutex_scope scope(_lock);
+            MutexScope scope(_lock);
             if (_queue.empty())
                 str = T();
             else

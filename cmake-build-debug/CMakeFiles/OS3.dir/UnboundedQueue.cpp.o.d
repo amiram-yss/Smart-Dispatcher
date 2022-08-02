@@ -135,7 +135,7 @@ CMakeFiles/OS3.dir/UnboundedQueue.cpp.o: \
  /usr/include/c++/11/bits/charconv.h \
  /usr/include/c++/11/bits/basic_string.tcc /usr/include/semaphore.h \
  /usr/include/x86_64-linux-gnu/bits/semaphore.h \
- /home/amiramyss/CLionProjects/OS3/mutex.h /usr/include/c++/11/csignal \
+ /home/amiramyss/CLionProjects/OS3/Mutex.h /usr/include/c++/11/csignal \
  /usr/include/signal.h \
  /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
  /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
@@ -165,4 +165,4 @@ CMakeFiles/OS3.dir/UnboundedQueue.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h \
  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
  /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
- /home/amiramyss/CLionProjects/OS3/mutex_scope.h
+ /home/amiramyss/CLionProjects/OS3/MutexScope.h

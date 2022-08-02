@@ -7,14 +7,14 @@
 #include <queue>
 #include <string>
 #include <semaphore.h>
-#include "mutex.h"
-#include "mutex_scope.h"
+#include "Mutex.h"
+#include "MutexScope.h"
 
 template<class T>
 class UnboundedQueue {
 private:
     //pthread_mutex_t _lock;
-    mutex _lock;
+    Mutex _lock;
     sem_t _full;
     std::queue<T> _queue;
 
@@ -38,7 +38,7 @@ public:
         // lock queue
         {
             //pthread_mutex_lock(&_lock);
-            mutex_scope scope(_lock);
+            MutexScope scope(_lock);
             //do operations on queue
             top_var = _queue.front();
             _queue.pop();
@@ -51,7 +51,7 @@ public:
     void push(T str) {
         // no limitation here. just lock and proceed
         {
-            mutex_scope scope(_lock);
+            MutexScope scope(_lock);
             //pthread_mutex_lock(&_lock);
             //push
             _queue.push(str);
@@ -66,7 +66,7 @@ public:
     T top() {
         T str;
         {
-            mutex_scope scope(_lock);
+            MutexScope scope(_lock);
             //pthread_mutex_lock(&_lock);
             if (_queue.empty())
                 str = nullptr;

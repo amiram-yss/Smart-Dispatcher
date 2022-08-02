@@ -4,20 +4,20 @@
 
 #include <thread>
 #include <iostream>
-#include "mutex.h"
+#include "Mutex.h"
 
-mutex::mutex() {
+Mutex::Mutex() {
     pthread_mutex_init(&_mutex_obj, nullptr);
 }
 
-mutex::~mutex() {
+Mutex::~Mutex() {
     pthread_mutex_destroy(&_mutex_obj);
 }
 
-void mutex::lock() {
+void Mutex::lock() {
     pthread_mutex_lock(&_mutex_obj);
 }
 
-void mutex::unlock() {
+void Mutex::unlock() {
     pthread_mutex_unlock(&_mutex_obj);
 }

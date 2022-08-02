@@ -157,7 +157,7 @@ CMakeFiles/OS3.dir/BoundedQueue.cpp.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/amiramyss/CLionProjects/OS3/mutex.h /usr/include/c++/11/csignal \
+ /home/amiramyss/CLionProjects/OS3/Mutex.h /usr/include/c++/11/csignal \
  /usr/include/signal.h \
  /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
  /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
@@ -187,4 +187,4 @@ CMakeFiles/OS3.dir/BoundedQueue.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h \
  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
  /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
- /home/amiramyss/CLionProjects/OS3/mutex_scope.h
+ /home/amiramyss/CLionProjects/OS3/MutexScope.h

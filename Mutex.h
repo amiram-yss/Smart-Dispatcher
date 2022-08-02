@@ -9,13 +9,13 @@
 
 #include <csignal>
 
-class mutex {
+class Mutex {
 private:
     pthread_mutex_t _mutex_obj;
 public:
-    mutex(const mutex&) = default;
-    explicit mutex();
-    virtual ~mutex();
+    Mutex(const Mutex&) = default;
+    explicit Mutex();
+    virtual ~Mutex();
     void lock();
     void unlock();
 };

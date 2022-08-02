@@ -91,6 +91,18 @@
 		<Unit filename="/home/amiramyss/CLionProjects/OS3/ConfigurationHandler.h">
 			<Option target="OS3"/>
 		</Unit>
+		<Unit filename="/home/amiramyss/CLionProjects/OS3/Mutex.cpp">
+			<Option target="OS3"/>
+		</Unit>
+		<Unit filename="/home/amiramyss/CLionProjects/OS3/Mutex.h">
+			<Option target="OS3"/>
+		</Unit>
+		<Unit filename="/home/amiramyss/CLionProjects/OS3/MutexScope.cpp">
+			<Option target="OS3"/>
+		</Unit>
+		<Unit filename="/home/amiramyss/CLionProjects/OS3/MutexScope.h">
+			<Option target="OS3"/>
+		</Unit>
 		<Unit filename="/home/amiramyss/CLionProjects/OS3/Report.cpp">
 			<Option target="OS3"/>
 		</Unit>
@@ -103,22 +115,13 @@
 		<Unit filename="/home/amiramyss/CLionProjects/OS3/ReporterHandler.h">
 			<Option target="OS3"/>
 		</Unit>
+		<Unit filename="/home/amiramyss/CLionProjects/OS3/TMP.cpp">
+			<Option target="OS3"/>
+		</Unit>
 		<Unit filename="/home/amiramyss/CLionProjects/OS3/UnboundedQueue.cpp">
 			<Option target="OS3"/>
 		</Unit>
 		<Unit filename="/home/amiramyss/CLionProjects/OS3/main.cpp">
-			<Option target="OS3"/>
-		</Unit>
-		<Unit filename="/home/amiramyss/CLionProjects/OS3/mutex.cpp">
-			<Option target="OS3"/>
-		</Unit>
-		<Unit filename="/home/amiramyss/CLionProjects/OS3/mutex.h">
-			<Option target="OS3"/>
-		</Unit>
-		<Unit filename="/home/amiramyss/CLionProjects/OS3/mutex_scope.cpp">
-			<Option target="OS3"/>
-		</Unit>
-		<Unit filename="/home/amiramyss/CLionProjects/OS3/mutex_scope.h">
 			<Option target="OS3"/>
 		</Unit>
 		<Unit filename="/home/amiramyss/CLionProjects/OS3/CMakeLists.txt">
