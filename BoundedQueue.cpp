@@ -27,7 +27,10 @@ public:
 
     BoundedQueue(unsigned int capacity = 0) :
         _capacity(capacity), _queue(), _lock() ,
-        _empty(new Semaphore(capacity)), _full(new Semaphore(0)) {
+        //_empty(new Semaphore(capacity)), _full(new Semaphore(0))
+        _empty(std::make_shared<Semaphore>(capacity)),
+        _full(std::make_shared<Semaphore>(0))
+        {
     }
 
     void push(T var) {
