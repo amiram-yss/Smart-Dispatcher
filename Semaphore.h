@@ -17,7 +17,7 @@ public:
     Semaphore(const Semaphore&) = delete;
     Semaphore operator=(const Semaphore&) = delete;
 
-    Semaphore(long long value);
+    Semaphore(long long value = 0);
 
     void wait();
     void post();

@@ -7,24 +7,27 @@
 #include <queue>
 #include <string>
 #include <semaphore.h>
+#include <memory>
 #include "Mutex.h"
 #include "MutexScope.h"
+#include "Semaphore.h"
 
 template<class T>
 class UnboundedQueue {
 private:
     //pthread_mutex_t _lock;
     Mutex _lock;
-    sem_t _full;
+    //sem_t _full;
     std::queue<T> _queue;
+    std::shared_ptr<Semaphore> _full;
 
 public:
     UnboundedQueue(const UnboundedQueue<T>&) = delete;
     UnboundedQueue& operator=(const UnboundedQueue<T>&) = delete;
 
 public:
-    UnboundedQueue() : _lock(), _full() {
-        sem_init(&_full, 0, 0);
+    UnboundedQueue() : _lock(), _full(new Semaphore()) {
+        //sem_init(&_full, 0, 0);
         //pthread_mutex_unlock(&_lock);
         //pthread_mutex_init(&_lock, nullptr);
     }
@@ -33,7 +36,8 @@ public:
     T pop() {
         T top_var;
         //wait until there is at least 1 object in queue
-        sem_wait(&_full);
+        //sem_wait(&_full);
+        _full->wait();
         //std::cout<<"POST POP SEM WAIT: " <<std::endl;
         // lock queue
         {
@@ -58,7 +62,8 @@ public:
             //unlock
             //pthread_mutex_unlock(&_lock);
         }
-        sem_post(&_full); //full++
+        //sem_post(&_full); //full++
+        _full->post();
         //std::cout << "SEM code " << std::to_string(x) << std::endl;
     }
 
@@ -79,7 +84,7 @@ public:
 
     ~UnboundedQueue() {
         //pthread_mutex_destroy(&_lock);
-        sem_close(&_full);
-        sem_destroy(&_full);
+        /*sem_close(&_full);
+        sem_destroy(&_full);*/
     }
 };
