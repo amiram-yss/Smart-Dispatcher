@@ -6,17 +6,17 @@
 #define OS3_SEMAPHORE_H
 
 
-#include <bits/semaphore.h>
+#include <semaphore.h>
 
 class Semaphore {
 private:
     sem_t _lock;
-    unsigned long long _value;
+    long long _value;
 public:
     Semaphore(const Semaphore&) = delete;
     Semaphore& operator=(const Semaphore&) = delete;
 
-    Semaphore(long long value = 0);
+    Semaphore(long long value);
 
     void wait();
     void post();

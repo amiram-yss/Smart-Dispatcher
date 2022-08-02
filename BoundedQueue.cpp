@@ -9,7 +9,6 @@
 #include <iostream>
 #include "Mutex.h"
 #include "MutexScope.h"
-#include "Semaphore.h"
 
 template<class T>
 class BoundedQueue {
