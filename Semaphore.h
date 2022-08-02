@@ -7,6 +7,7 @@
 
 
 #include <semaphore.h>
+#include <iostream>
 
 class Semaphore {
 private:
@@ -14,7 +15,7 @@ private:
     long long _value;
 public:
     Semaphore(const Semaphore&) = delete;
-    Semaphore& operator=(const Semaphore&) = delete;
+    Semaphore operator=(const Semaphore&) = delete;
 
     Semaphore(long long value);
 

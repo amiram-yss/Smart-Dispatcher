@@ -4,8 +4,10 @@
 
 #include "Semaphore.h"
 
-Semaphore::Semaphore(long long int value) {
-    _value = value;
+static int ctr = 0;
+
+Semaphore::Semaphore(long long int value) : _value(value) {
+    //_value = value;
     sem_init(&_lock, 0, value);
 }
 
@@ -14,7 +16,7 @@ void Semaphore::wait() {
 }
 
 void Semaphore::post() {
-    sem_wait(&_lock);
+    sem_post(&_lock);
 }
 
 Semaphore::~Semaphore() {

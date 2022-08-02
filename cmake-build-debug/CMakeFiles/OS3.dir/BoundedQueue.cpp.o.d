@@ -187,4 +187,5 @@ CMakeFiles/OS3.dir/BoundedQueue.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h \
  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
  /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
- /home/amiramyss/CLionProjects/OS3/MutexScope.h
+ /home/amiramyss/CLionProjects/OS3/MutexScope.h \
+ /home/amiramyss/CLionProjects/OS3/Semaphore.h

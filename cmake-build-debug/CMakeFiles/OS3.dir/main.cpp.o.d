@@ -183,6 +183,7 @@ CMakeFiles/OS3.dir/main.cpp.o: /home/amiramyss/CLionProjects/OS3/main.cpp \
  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
  /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
  /home/amiramyss/CLionProjects/OS3/MutexScope.h \
+ /home/amiramyss/CLionProjects/OS3/Semaphore.h \
  /home/amiramyss/CLionProjects/OS3/UnboundedQueue.cpp \
  /home/amiramyss/CLionProjects/OS3/ConfigurationHandler.h \
  /home/amiramyss/CLionProjects/OS3/Report.h \
