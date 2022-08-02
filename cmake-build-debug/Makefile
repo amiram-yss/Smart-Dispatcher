@@ -273,29 +273,29 @@ ReporterHandler.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/ReporterHandler.cpp.s
 .PHONY : ReporterHandler.cpp.s
 
-TMP.o: TMP.cpp.o
-.PHONY : TMP.o
+Semaphore.o: Semaphore.cpp.o
+.PHONY : Semaphore.o
 
 # target to build an object file
-TMP.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/TMP.cpp.o
-.PHONY : TMP.cpp.o
+Semaphore.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/Semaphore.cpp.o
+.PHONY : Semaphore.cpp.o
 
-TMP.i: TMP.cpp.i
-.PHONY : TMP.i
+Semaphore.i: Semaphore.cpp.i
+.PHONY : Semaphore.i
 
 # target to preprocess a source file
-TMP.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/TMP.cpp.i
-.PHONY : TMP.cpp.i
+Semaphore.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/Semaphore.cpp.i
+.PHONY : Semaphore.cpp.i
 
-TMP.s: TMP.cpp.s
-.PHONY : TMP.s
+Semaphore.s: Semaphore.cpp.s
+.PHONY : Semaphore.s
 
 # target to generate assembly for a file
-TMP.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/TMP.cpp.s
-.PHONY : TMP.cpp.s
+Semaphore.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OS3.dir/build.make CMakeFiles/OS3.dir/Semaphore.cpp.s
+.PHONY : Semaphore.cpp.s
 
 UnboundedQueue.o: UnboundedQueue.cpp.o
 .PHONY : UnboundedQueue.o
@@ -372,9 +372,9 @@ help:
 	@echo "... ReporterHandler.o"
 	@echo "... ReporterHandler.i"
 	@echo "... ReporterHandler.s"
-	@echo "... TMP.o"
-	@echo "... TMP.i"
-	@echo "... TMP.s"
+	@echo "... Semaphore.o"
+	@echo "... Semaphore.i"
+	@echo "... Semaphore.s"
 	@echo "... UnboundedQueue.o"
 	@echo "... UnboundedQueue.i"
 	@echo "... UnboundedQueue.s"

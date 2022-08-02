@@ -181,19 +181,19 @@ CMakeFiles/OS3.dir/MutexScope.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OS3.dir/MutexScope.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/amiramyss/CLionProjects/OS3/MutexScope.cpp -o CMakeFiles/OS3.dir/MutexScope.cpp.s
 
-CMakeFiles/OS3.dir/TMP.cpp.o: CMakeFiles/OS3.dir/flags.make
-CMakeFiles/OS3.dir/TMP.cpp.o: ../TMP.cpp
-CMakeFiles/OS3.dir/TMP.cpp.o: CMakeFiles/OS3.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/amiramyss/CLionProjects/OS3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/OS3.dir/TMP.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OS3.dir/TMP.cpp.o -MF CMakeFiles/OS3.dir/TMP.cpp.o.d -o CMakeFiles/OS3.dir/TMP.cpp.o -c /home/amiramyss/CLionProjects/OS3/TMP.cpp
+CMakeFiles/OS3.dir/Semaphore.cpp.o: CMakeFiles/OS3.dir/flags.make
+CMakeFiles/OS3.dir/Semaphore.cpp.o: ../Semaphore.cpp
+CMakeFiles/OS3.dir/Semaphore.cpp.o: CMakeFiles/OS3.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/amiramyss/CLionProjects/OS3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/OS3.dir/Semaphore.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OS3.dir/Semaphore.cpp.o -MF CMakeFiles/OS3.dir/Semaphore.cpp.o.d -o CMakeFiles/OS3.dir/Semaphore.cpp.o -c /home/amiramyss/CLionProjects/OS3/Semaphore.cpp
 
-CMakeFiles/OS3.dir/TMP.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OS3.dir/TMP.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/amiramyss/CLionProjects/OS3/TMP.cpp > CMakeFiles/OS3.dir/TMP.cpp.i
+CMakeFiles/OS3.dir/Semaphore.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OS3.dir/Semaphore.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/amiramyss/CLionProjects/OS3/Semaphore.cpp > CMakeFiles/OS3.dir/Semaphore.cpp.i
 
-CMakeFiles/OS3.dir/TMP.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OS3.dir/TMP.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/amiramyss/CLionProjects/OS3/TMP.cpp -o CMakeFiles/OS3.dir/TMP.cpp.s
+CMakeFiles/OS3.dir/Semaphore.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OS3.dir/Semaphore.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/amiramyss/CLionProjects/OS3/Semaphore.cpp -o CMakeFiles/OS3.dir/Semaphore.cpp.s
 
 # Object files for target OS3
 OS3_OBJECTS = \
@@ -205,7 +205,7 @@ OS3_OBJECTS = \
 "CMakeFiles/OS3.dir/ReporterHandler.cpp.o" \
 "CMakeFiles/OS3.dir/Mutex.cpp.o" \
 "CMakeFiles/OS3.dir/MutexScope.cpp.o" \
-"CMakeFiles/OS3.dir/TMP.cpp.o"
+"CMakeFiles/OS3.dir/Semaphore.cpp.o"
 
 # External object files for target OS3
 OS3_EXTERNAL_OBJECTS =
@@ -218,7 +218,7 @@ OS3: CMakeFiles/OS3.dir/Report.cpp.o
 OS3: CMakeFiles/OS3.dir/ReporterHandler.cpp.o
 OS3: CMakeFiles/OS3.dir/Mutex.cpp.o
 OS3: CMakeFiles/OS3.dir/MutexScope.cpp.o
-OS3: CMakeFiles/OS3.dir/TMP.cpp.o
+OS3: CMakeFiles/OS3.dir/Semaphore.cpp.o
 OS3: CMakeFiles/OS3.dir/build.make
 OS3: CMakeFiles/OS3.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/amiramyss/CLionProjects/OS3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable OS3"

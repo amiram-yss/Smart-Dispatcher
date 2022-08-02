@@ -115,7 +115,10 @@
 		<Unit filename="/home/amiramyss/CLionProjects/OS3/ReporterHandler.h">
 			<Option target="OS3"/>
 		</Unit>
-		<Unit filename="/home/amiramyss/CLionProjects/OS3/TMP.cpp">
+		<Unit filename="/home/amiramyss/CLionProjects/OS3/Semaphore.cpp">
+			<Option target="OS3"/>
+		</Unit>
+		<Unit filename="/home/amiramyss/CLionProjects/OS3/Semaphore.h">
 			<Option target="OS3"/>
 		</Unit>
 		<Unit filename="/home/amiramyss/CLionProjects/OS3/UnboundedQueue.cpp">
