@@ -19,14 +19,14 @@ private:
     Mutex _lock;
     //sem_t _full;
     std::queue<T> _queue;
-    std::shared_ptr<Semaphore> _full;
+    std::unique_ptr<Semaphore> _full;
 
 public:
     UnboundedQueue(const UnboundedQueue<T>&) = delete;
     UnboundedQueue& operator=(const UnboundedQueue<T>&) = delete;
 
 public:
-    UnboundedQueue() : _lock(), _full(std::make_shared<Semaphore>(0)) {
+    UnboundedQueue() : _lock(), _full(std::make_unique<Semaphore>(0)) {
         //sem_init(&_full, 0, 0);
         //pthread_mutex_unlock(&_lock);
         //pthread_mutex_init(&_lock, nullptr);
