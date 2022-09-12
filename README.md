@@ -18,20 +18,20 @@ The last number in the file represents the buffer of the screen's bounded queue.
 
 Example for a configuration file:
 
-1__
-4__
-3__
+1  
+4  
+3  
 
-2__
-3__
-6__
+2  
+3  
+6  
 
-3__
-10__
-4__
+3  
+10  
+4  
 
-4__
-4__
-2__
+4  
+4  
+2  
 
 5
