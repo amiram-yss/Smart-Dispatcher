@@ -7,6 +7,10 @@
 #include <fstream>
 #include <iostream>
 
+/**
+ * Read and process config file.
+ * @return Array of configuration items, and updates 2nd param to screen buffer's size.
+ */
 std::vector <ConfigurationHandler::ConfigurationItem>
         *ConfigurationHandler::ReadConfig(std::string confFileName, int* screenBufferSize) {
 
@@ -19,7 +23,7 @@ std::vector <ConfigurationHandler::ConfigurationItem>
         while (line == "\n")
             std::getline(confFile, line);
         int id = atoi(line.c_str());
-        // if no second line appears its the screen buffer
+        // if no second line appears it's the screen buffer
         if(std::getline(confFile, line)) {
             int num = atoi(line.c_str());
             std::getline(confFile, line);

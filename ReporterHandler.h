@@ -14,13 +14,27 @@ class ReporterHandler {
 private:
     unsigned int _id, _reportsNum;
 public:
+    // True if reporter finisher reporting.
     bool _done;
+
+    // Reports bounded queue
     BoundedQueue<std::string> _buffer;
 
+    /**
+     * Constructor.
+     * Type rendered randomly.
+     */
     ReporterHandler();
 
+    /**
+     * Constructor.
+     * @param data report type.
+     */
     explicit ReporterHandler(ConfigurationHandler::ConfigurationItem data);
 
+    /**
+     * Make reporter make reports.
+     */
     void makeReports();
 };
 

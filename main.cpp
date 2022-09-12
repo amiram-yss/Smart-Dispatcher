@@ -18,6 +18,11 @@ static std::vector<pthread_t> reporterThreads;
 static pthread_t dispatcher_thread;
 static std::vector<pthread_t> coEditorThreadCollection;
 
+/**
+ * Inits all variables for program's execution.
+ * @param fileName path to configuration file
+ * @return True if init been successful. False o.w.
+ */
 bool init(std::string fileName) {
     // For good randomization.
     srand(time(NULL));
@@ -42,17 +47,32 @@ bool init(std::string fileName) {
     return true;
 }
 
+/**
+ * Starts reporter routine.
+ * @param repHandler pointer to a reporter to start his routine.
+ * @return (INOP)
+ */
 void *singleReporterRoutine(void *repHandler) {
     auto reporter = (ReporterHandler *) repHandler;
     reporter->makeReports();
     return nullptr;
 }
 
+/**
+ * Puts report in the right category's queue.
+ * @param report The report to categorize.
+ */
 void categorizeReport(std::string report) {
     auto type = Report::getReportType(report);
     dispatcherQueues[type].push(report);
 }
 
+/**
+ * Handles the execution routine of the dispatcher.
+ * As long ase there are reporters who haven't finished working, keep working.
+ * @param params (INOP)
+ * @return (INOP)
+ */
 void *dispatcherRoutine(void *params) {
     bool finished;
     // As long as there is at least 1 active reported
@@ -82,11 +102,18 @@ void *dispatcherRoutine(void *params) {
     return nullptr;
 }
 
+/**
+ * Simulates reporter edit time.
+ */
 void editReport() {
-    // Good job editor lol, what a waste of money :|
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
 }
 
+/**
+ * Pushes news items, from categorized queues into the screen buffer.
+ * @param params (INOP)
+ * @return (INOP)
+ */
 void *coEditorRoutine(void *params){
     auto type = *((ReportType*)params);
     //UnboundedQueue<std::string>& queue = dispatcherQueues[type];
@@ -105,6 +132,9 @@ void *coEditorRoutine(void *params){
     return nullptr;
 }
 
+/**
+ * Keeps pulling items from the queue, and show them.
+ */
 void screenManagerRoutine() {
     int left = dispatcherQueues.size();
     while (left) {
@@ -118,6 +148,10 @@ void screenManagerRoutine() {
     std::cout << "DONE" << std::endl;
 }
 
+/**
+ * Start the program.
+ * Runs the threads and starts the routines of each part.
+ */
 void routine() {
 
     for (int i = 0; i < reporterQueues.size(); ++i) {

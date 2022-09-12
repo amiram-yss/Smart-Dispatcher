@@ -12,6 +12,11 @@
 #include "MutexScope.h"
 #include "Semaphore.h"
 
+/**
+ * Queue with fixed capacity. Thread safe.
+ * @tparam T
+ */
+
 template<class T>
 class BoundedQueue {
 private:
@@ -24,7 +29,10 @@ private:
     std::shared_ptr<Semaphore> _full;
 
 public:
-
+    /**
+     * Constructor
+     * @param capacity Queue's capacity.
+     */
     BoundedQueue(unsigned int capacity = 0) :
         _capacity(capacity), _queue(), _lock() ,
         //_empty(new Semaphore(capacity)), _full(new Semaphore(0))
@@ -33,6 +41,10 @@ public:
         {
     }
 
+    /**
+     * Push to queue.
+     * @param var
+     */
     void push(T var) {
         //wait as long as queue full
         //sem_wait(&_empty); //empty--;
@@ -45,6 +57,10 @@ public:
         }
     }
 
+    /**
+     * Pop from queue.
+     * @return variable at the top.
+     */
     T pop() {
         T t;
         //wait as long as there are no nodes in queue
@@ -64,6 +80,10 @@ public:
         return t;
     }
 
+    /**
+     * See top of queue.
+     * @return Top variable.
+     */
     T top() {
         T str;
         //pthread_mutex_lock(&_lock);
@@ -78,6 +98,9 @@ public:
         return str;
     }
 
+    /**
+     * Destructor.
+     */
     ~BoundedQueue() {
         //pthread_mutex_destroy(&_lock);
         /*sem_close(&_empty);

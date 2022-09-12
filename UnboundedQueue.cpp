@@ -12,6 +12,10 @@
 #include "MutexScope.h"
 #include "Semaphore.h"
 
+/**
+ * Thread safe unlimited queue.
+ * @tparam T
+ */
 template<class T>
 class UnboundedQueue {
 private:
@@ -26,12 +30,18 @@ public:
     UnboundedQueue& operator=(const UnboundedQueue<T>&) = delete;
 
 public:
+    /**
+     * Constructor.
+     */
     UnboundedQueue() : _lock(), _full(std::make_unique<Semaphore>(0)) {
         //sem_init(&_full, 0, 0);
         //pthread_mutex_unlock(&_lock);
         //pthread_mutex_init(&_lock, nullptr);
     }
-
+    /*
+    * Pop from queue.
+    * @return variable at the top.
+    */
     //std::string pop() {
     T pop() {
         T top_var;
@@ -52,6 +62,10 @@ public:
         return top_var;
     };
 
+    /**
+     * Push to queue.
+     * @param var
+     */
     void push(T str) {
         // no limitation here. just lock and proceed
         {
@@ -67,7 +81,10 @@ public:
         //std::cout << "SEM code " << std::to_string(x) << std::endl;
     }
 
-
+    /**
+     * See top of queue.
+     * @return Top variable.
+     */
     T top() {
         T str;
         {
@@ -82,6 +99,9 @@ public:
         return str;
     }
 
+    /**
+     * Destructor.
+     */
     ~UnboundedQueue() {
         //pthread_mutex_destroy(&_lock);
         /*sem_close(&_full);
